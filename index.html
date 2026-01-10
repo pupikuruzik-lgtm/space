@@ -33,3 +33,97 @@
     </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Space Background</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at bottom, #020111 0%, #000000 70%);
+        overflow: hidden;
+    }
+
+    /* Звёзды */
+    .star {
+        position: absolute;
+        width: 1.5cm;
+        height: 1.5cm;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        box-shadow: 0 0 8px white;
+    }
+
+    /* Планеты */
+    .planet {
+        position: absolute;
+        border-radius: 50%;
+        box-shadow: inset -10px -10px 20px rgba(0,0,0,0.5),
+                    0 0 25px rgba(255,255,255,0.2);
+    }
+
+    /* Кольца */
+    .ring {
+        position: absolute;
+        width: 140%;
+        height: 40%;
+        border: 3px solid rgba(255,255,255,0.4);
+        border-radius: 50%;
+        top: 30%;
+        left: -20%;
+        transform: rotate(-20deg);
+    }
+
+    /* Спутники */
+    .moon {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: #ccc;
+        border-radius: 50%;
+        box-shadow: 0 0 5px white;
+    }
+</style>
+</head>
+<body>
+
+<!-- Планета 1 с кольцами -->
+<div class="planet" style="width:120px;height:120px;background:#5dade2;top:15%;left:10%;">
+    <div class="ring"></div>
+</div>
+
+<!-- Планета 2 со спутником -->
+<div class="planet" style="width:90px;height:90px;background:#f5b041;top:60%;left:20%;">
+    <div class="moon" style="top:-20px;left:60px;"></div>
+</div>
+
+<!-- Планета 3 -->
+<div class="planet" style="width:150px;height:150px;background:#af7ac5;top:30%;left:70%;">
+    <div class="ring"></div>
+    <div class="moon" style="top:20px;left:-25px;"></div>
+</div>
+
+<!-- Дополнительные планеты -->
+<div class="planet" style="width:70px;height:70px;background:#58d68d;top:75%;left:65%;"></div>
+<div class="planet" style="width:50px;height:50px;background:#ec7063;top:10%;left:50%;"></div>
+
+<!-- Звёзды -->
+<script>
+    for (let i = 0; i < 80; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.width = star.style.height = Math.random() * 3 + 2 + 'px';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.opacity = Math.random();
+        document.body.appendChild(star);
+    }
+</script>
+
+</body>
+</html>
