@@ -11,26 +11,35 @@ app.post("/chat", async (req,res)=>{
 
 const userText = req.body.message
 
-const response = await fetch("https://api.openai.com/v1/chat/completions",{
-method:"POST",
-headers:{
-"Content-Type":"application/json",
-"Authorization":"Bearer "+API_KEY
-},
-body:JSON.stringify({
-model:"gpt-4o-mini",
-messages:[
-{role:"system",content:"Ты космический помощник."},
-{role:"user",content:userText}
-]
-})
-})
+try {
+  const response = await fetch("https://api.openai.com/v1/chat/completions",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "Authorization":"Bearer "+API_KEY
+    },
+    body:JSON.stringify({
+      model:"gpt-4o-mini",
+      messages:[
+        {role:"system",content:"Ты космический помощник."},
+        {role:"user",content:userText}
+      ]
+    })
+  });
 
-const data = await response.json()
+  const data = await response.json();
 
-res.json({
-answer:data.choices[0].message.content
-})
+  if(data.error){
+    console.error(data.error);
+    return res.status(500).json({answer:"Ошибка API: "+data.error.message});
+  }
+
+  res.json({answer:data.choices[0].message.content});
+
+} catch(err){
+  console.error(err);
+  res.status(500).json({answer:"Ошибка сервера"});
+}
 
 })
 
