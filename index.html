@@ -205,8 +205,38 @@ chat.innerHTML+=`<p class="bot">Бот: Думаю над ответом... 🚀
 
 chat.scrollTop=chat.scrollHeight;
 
+try{
+
+const response = await fetch("https://api.openai.com/v1/chat/completions",{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"Authorization":"Bearer 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"
+},
+body:JSON.stringify({
+model:"gpt-4o-mini",
+messages:[
+{role:"system",content:"Ты космический помощник для детей."},
+{role:"user",content:userText}
+]
+})
+});
+
+const data = await response.json();
+
+const botText = data.choices[0].message.content;
+
+chat.innerHTML+=`<p class="bot">Бот: ${botText}</p>`;
+
+chat.scrollTop=chat.scrollHeight;
+
+}catch(error){
+
+chat.innerHTML+=`<p class="bot">Бот: Ошибка подключения 🚨</p>`;
+
 }
 
+}
 </script>
 
 </body>
