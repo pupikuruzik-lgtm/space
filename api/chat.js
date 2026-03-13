@@ -1,6 +1,5 @@
 import OpenAI from "openai";
 
-// Создаём клиент OpenAI с ключом из переменных окружения
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 export default async function handler(req, res) {
