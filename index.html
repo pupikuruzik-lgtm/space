@@ -108,13 +108,11 @@ chat.innerHTML+=`<p class="user">Ты: ${text}</p>`
 
 input.value=""
 
-const response=await fetch("/chat",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({message:text})
-})
+const response=await const response = await fetch("/api/chat", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ message: text })
+});
 
 const data=await response.json()
 
