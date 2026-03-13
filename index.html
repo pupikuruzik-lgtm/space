@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Space — Чат с космическим помощником</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at bottom,#020111,#000);
+  color: white;
+  text-align: center;
+}
+.neon-big-text {
+  color: #00ff7f;
+  font-size: 48px;
+  text-shadow: 0 0 20px #fff, 0 0 40px #fff;
+}
+.neon-text {
+  color: #00ff7f;
+  text-shadow: 0 0 10px #fff;
+}
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
+#chatBox {
+  width: 350px;
+  height: 250px;
+  margin: auto;
+  border: 2px solid #00ff7f;
+  padding: 10px;
+  overflow-y: auto;
+  background: rgba(0,0,0,0.5);
+}
+#chatBox p {
+  background: rgba(0,0,0,0.6);
+  padding: 6px;
+  border-radius: 6px;
+  margin: 5px 0;
+}
+.user { color: #00ff7f }
+.bot { color: #00ffff }
+input { padding: 6px; width: 220px; }
+button { padding: 6px 10px; }
+</style>
+</head>
+<body>
+
+<h1 class="neon-big-text">🚀 Space</h1>
+<p class="neon-text">Изучаем космос просто и интересно</p>
+
+<h2 class="neon-big-text">💬 Чат с космическим помощником</h2>
+<div id="chatBox"></div>
+<br>
+<input id="userInput" placeholder="Спроси о космосе">
+<button onclick="sendMessage()">Отправить</button>
+
+<script>
+// создаём звёзды
+for (let i = 0; i < 80; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  const size = Math.random() * 3 + 2;
+  star.style.width = size + "px";
+  star.style.height = size + "px";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.left = Math.random() * 100 + "%";
+  document.body.appendChild(star);
+}
+
+// функция отправки сообщения
+async function sendMessage() {
+  const input = document.getElementById("userInput");
+  const chat = document.getElementById("chatBox");
+  const text = input.value.trim();
+  if (!text) return;
+
+  chat.innerHTML += `<p class="user">Ты: ${text}</p>`;
+  input.value = "";
+
+  try {
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text })
+    });
+    const data = await response.json();
+    chat.innerHTML += `<p class="bot">Бот: ${data.answer}</p>`;
+  } catch (err) {
+    console.error(err);
+    chat.innerHTML += `<p class="bot">Бот: Ошибка сервера</p>`;
+  }
+
+  chat.scrollTop = chat.scrollHeight;
+}
+
+// отправка по Enter
+document.getElementById("userInput").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") sendMessage();
+});
+</script>
+</body>
+</html>
