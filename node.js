@@ -6,7 +6,7 @@ const app = express()
 app.use(express.json())
 app.use(express.static("."))
 
-const API_KEY = "ТВОЙ_API_KEY"
+const API_KEY = "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"
 
 app.post("/chat", async (req,res)=>{
 
