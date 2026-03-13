@@ -1,46 +1,22 @@
-import express from "express"
+import OpenAI from "openai";
 
-const app = express()
+const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-app.use(express.json())
-app.use(express.static("."))
+export default async function handler(req, res) {
+  const { message } = req.body;
 
-const API_KEY = "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"
-
-app.post("/chat", async (req,res)=>{
-
-const userText = req.body.message
-
-try {
-  const response = await fetch("https://api.openai.com/v1/chat/completions",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json",
-      "Authorization":"Bearer "+API_KEY
-    },
-    body:JSON.stringify({
-      model:"gpt-4o-mini",
-      messages:[
-        {role:"system",content:"Ты космический помощник."},
-        {role:"user",content:userText}
+  try {
+    const response = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        { role: "system", content: "Ты космический помощник." },
+        { role: "user", content: message }
       ]
-    })
-  });
+    });
 
-  const data = await response.json();
-
-  if(data.error){
-    console.error(data.error);
-    return res.status(500).json({answer:"Ошибка API: "+data.error.message});
+    res.status(200).json({ answer: response.choices[0].message.content });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ answer: "Ошибка сервера" });
   }
-
-  res.json({answer:data.choices[0].message.content});
-
-} catch(err){
-  console.error(err);
-  res.status(500).json({answer:"Ошибка сервера"});
 }
-
-})
-
-app.listen(3000,()=>console.log("Server started"))
