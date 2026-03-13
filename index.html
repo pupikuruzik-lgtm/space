@@ -115,6 +115,21 @@
         border-radius: 50%;
         box-shadow: 0 0 5px white;
     }
+    #chatBox p{
+    color:white;
+    background:rgba(0,0,0,0.6);
+    padding:6px;
+    border-radius:6px;
+    margin:5px 0;
+}
+
+.user{
+    color:#00ff7f;
+}
+
+.bot{
+    color:#00ffff;
+}
 </style>
 </head>
 <body>
@@ -158,7 +173,7 @@ async function sendMessage() {
 
     const userText = input.value;
 
-    chat.innerHTML += "<p><b>Ты:</b> " + userText + "</p>";
+    chat.innerHTML += `<p class="user">Ты: ${userText}</p>`;
 
     input.value = "";
 
@@ -181,14 +196,24 @@ async function sendMessage() {
 
     const botText = data.choices[0].message.content;
 
-    chat.innerHTML += "<p><b>Бот:</b> " + botText + "</p>";
+    chat.innerHTML += `<p class="bot">Бот: ${botText}</p>`;
+    chat.scrollTop = chat.scrollHeight;
 }
 </script>
 
         <section>
     <h2 class="neon-big-text">💬 Чат с космическим помощником</h2>
 
-    <div id="chatBox" style="width:300px;margin:auto;border:1px solid #00ff7f;padding:10px;height:200px;overflow-y:auto;"></div>
+    <div id="chatBox" style="
+width:350px;
+height:250px;
+margin:auto;
+border:2px solid #00ff7f;
+padding:10px;
+overflow-y:auto;
+background:rgba(0,0,0,0.5);
+">
+</div>
 
     <input id="userInput" placeholder="Напиши вопрос о космосе..."
     style="width:220px;padding:5px">
