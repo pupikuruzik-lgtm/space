@@ -1,210 +1,133 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Space — Обучение космосу</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1 class="neon-big-text">🚀 Space</h1>
-        <p class="neon-text">Изучаем космос просто и интересно</p>
-    </header>
-
-    <main>
-        <section>
-            <h2 class="neon-big-text">🌍 Планеты</h2>
-            <p class="neon-text">Солнечная система состоит из 8 планет, вращающихся вокруг Солнца.</p>
-        </section>
-
-        <section>
-            <h2 class="neon-big-text">⭐ Звёзды</h2>
-            <p class="neon-text">Звёзды — это огромные раскалённые шары газа, излучающие свет и тепло.</p>
-        </section>
-
-        <section>
-            <h2 class="neon-big-text">👨‍🚀 Космонавты</h2>
-            <p class="neon-text">Космонавты исследуют космос и работают на орбитальных станциях.</p>
-        </section>
-    </main>
-
-    <footer>
-        <p class="neon-text">© 2026 Space | Обучающий проект</p>
-        <p class="neon-text">Мои контакты: +996704130700</p>
-    </footer>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
 <meta charset="UTF-8">
-<title>Space Background</title>
+<title>Space — Обучение космосу</title>
+
 <style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle at bottom, #020111 0%, #000000 70%);
-        overflow: hidden;
-    }
 
-    section, header, footer {
-        text-align: center;
-    }
-    
-    .neon-big-text {
-    color: #00ff7f;
-    font-family: 'Arial', sans-serif;
-    font-size: 48px;
-    text-shadow:
-        0 0 20px #FFFFFF,
-        0 0 40px #FFFFFF,
-        0 0 80px #FFFFFF;
-}
-    .neon-text {
-    color: #00ff7f;
-    font-family: 'Arial', sans-serif;
-    font-size: 12px;
-    text-shadow:
-        0 0 5px #FFFFFF,
-        0 0 10px #FFFFFF,
-        0 0 20px #FFFFFF,
-        0 0 40px #FFFFFF,
-        0 0 80px #FFFFFF;
+html, body{
+margin:0;
+padding:0;
+width:100%;
+height:100%;
+background: radial-gradient(circle at bottom, #020111 0%, #000000 70%);
+font-family:Arial;
 }
 
+section, header, footer{
+text-align:center;
+}
 
-    /* Звёзды */
-    .star {
-        position: absolute;
-        width: 1.5cm;
-        height: 1.5cm;
-        background: white;
-        border-radius: 50%;
-        opacity: 0.8;
-        box-shadow: 0 0 8px white;
-    }
+.neon-big-text{
+color:#00ff7f;
+font-size:48px;
+text-shadow:
+0 0 20px #fff,
+0 0 40px #fff,
+0 0 80px #fff;
+}
 
-    /* Планеты */
-    .planet {
-        position: absolute;
-        border-radius: 50%;
-        box-shadow: inset -10px -10px 20px rgba(0,0,0,0.5),
-                    0 0 25px rgba(255,255,255,0.2);
-    }
+.neon-text{
+color:#00ff7f;
+font-size:14px;
+text-shadow:
+0 0 5px #fff,
+0 0 10px #fff,
+0 0 20px #fff,
+0 0 40px #fff;
+}
 
-    /* Кольца */
-    .ring {
-        position: absolute;
-        width: 140%;
-        height: 40%;
-        border: 3px solid rgba(255,255,255,0.4);
-        border-radius: 50%;
-        top: 30%;
-        left: -20%;
-        transform: rotate(-20deg);
-    }
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+opacity:0.8;
+box-shadow:0 0 8px white;
+}
 
-    /* Спутники */
-    .moon {
-        position: absolute;
-        width: 15px;
-        height: 15px;
-        background: #ccc;
-        border-radius: 50%;
-        box-shadow: 0 0 5px white;
-    }
-    #chatBox p{
-    color:white;
-    background:rgba(0,0,0,0.6);
-    padding:6px;
-    border-radius:6px;
-    margin:5px 0;
+.planet{
+position:absolute;
+border-radius:50%;
+box-shadow:
+inset -10px -10px 20px rgba(0,0,0,0.5),
+0 0 25px rgba(255,255,255,0.2);
+}
+
+.ring{
+position:absolute;
+width:140%;
+height:40%;
+border:3px solid rgba(255,255,255,0.4);
+border-radius:50%;
+top:30%;
+left:-20%;
+transform:rotate(-20deg);
+}
+
+.moon{
+position:absolute;
+width:15px;
+height:15px;
+background:#ccc;
+border-radius:50%;
+box-shadow:0 0 5px white;
+}
+
+#chatBox p{
+color:white;
+background:rgba(0,0,0,0.6);
+padding:6px;
+border-radius:6px;
+margin:5px 0;
 }
 
 .user{
-    color:#00ff7f;
+color:#00ff7f;
 }
 
 .bot{
-    color:#00ffff;
+color:#00ffff;
 }
+
 </style>
 </head>
+
 <body>
 
-<!-- Планета 1 с кольцами -->
-<div class="planet" style="width:120px;height:120px;background:#5dade2;top:15%;left:10%;">
-    <div class="ring"></div>
-</div>
+<header>
+<h1 class="neon-big-text">🚀 Space</h1>
+<p class="neon-text">Изучаем космос просто и интересно</p>
+</header>
 
-<!-- Планета 2 со спутником -->
-<div class="planet" style="width:90px;height:90px;background:#f5b041;top:60%;left:20%;">
-    <div class="moon" style="top:-20px;left:60px;"></div>
-</div>
+<main>
 
-<!-- Планета 3 -->
-<div class="planet" style="width:150px;height:150px;background:#af7ac5;top:30%;left:70%;">
-    <div class="ring"></div>
-    <div class="moon" style="top:20px;left:-25px;"></div>
-</div>
+<section>
+<h2 class="neon-big-text">🌍 Планеты</h2>
+<p class="neon-text">
+Солнечная система состоит из 8 планет, вращающихся вокруг Солнца.
+</p>
+</section>
 
-<!-- Дополнительные планеты -->
-<div class="planet" style="width:70px;height:70px;background:#58d68d;top:75%;left:65%;"></div>
-<div class="planet" style="width:50px;height:50px;background:#ec7063;top:10%;left:60%;"></div>
+<section>
+<h2 class="neon-big-text">⭐ Звёзды</h2>
+<p class="neon-text">
+Звёзды — это огромные раскалённые шары газа.
+</p>
+</section>
 
-<!-- Звёзды -->
-<script>
-    for (let i = 0; i < 80; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.width = star.style.height = Math.random() * 3 + 2 + 'px';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.opacity = Math.random();
-        document.body.appendChild(star);
-    }
-    
-async function sendMessage() {
+<section>
+<h2 class="neon-big-text">👨‍🚀 Космонавты</h2>
+<p class="neon-text">
+Космонавты исследуют космос и работают на орбитальных станциях.
+</p>
+</section>
 
-    const input = document.getElementById("userInput");
-    const chat = document.getElementById("chatBox");
+<section>
+<h2 class="neon-big-text">💬 Чат с космическим помощником</h2>
 
-    const userText = input.value;
-
-    chat.innerHTML += `<p class="user">Ты: ${userText}</p>`;
-
-    input.value = "";
-
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer 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"
-        },
-        body: JSON.stringify({
-            model: "gpt-4o-mini",
-            messages: [
-                {role: "system", content: "Ты помощник по космосу для детей."},
-                {role: "user", content: userText}
-            ]
-        })
-    });
-
-    const data = await response.json();
-
-    const botText = data.choices[0].message.content;
-
-    chat.innerHTML += `<p class="bot">Бот: ${botText}</p>`;
-    chat.scrollTop = chat.scrollHeight;
-}
-</script>
-
-        <section>
-    <h2 class="neon-big-text">💬 Чат с космическим помощником</h2>
-
-    <div id="chatBox" style="
+<div id="chatBox"
+style="
 width:350px;
 height:250px;
 margin:auto;
@@ -215,10 +138,76 @@ background:rgba(0,0,0,0.5);
 ">
 </div>
 
-    <input id="userInput" placeholder="Напиши вопрос о космосе..."
-    style="width:220px;padding:5px">
+<input id="userInput"
+placeholder="Напиши вопрос о космосе..."
+style="width:220px;padding:5px">
 
-    <button onclick="sendMessage()">Отправить</button>
+<button onclick="sendMessage()">Отправить</button>
+
 </section>
+
+</main>
+
+<footer>
+<p class="neon-text">© 2026 Space | Обучающий проект</p>
+<p class="neon-text">Мои контакты: +996704130700</p>
+</footer>
+
+<!-- Планеты -->
+
+<div class="planet" style="width:120px;height:120px;background:#5dade2;top:15%;left:10%;">
+<div class="ring"></div>
+</div>
+
+<div class="planet" style="width:90px;height:90px;background:#f5b041;top:60%;left:20%;">
+<div class="moon" style="top:-20px;left:60px;"></div>
+</div>
+
+<div class="planet" style="width:150px;height:150px;background:#af7ac5;top:30%;left:70%;">
+<div class="ring"></div>
+<div class="moon" style="top:20px;left:-25px;"></div>
+</div>
+
+<div class="planet" style="width:70px;height:70px;background:#58d68d;top:75%;left:65%;"></div>
+<div class="planet" style="width:50px;height:50px;background:#ec7063;top:10%;left:60%;"></div>
+
+<script>
+
+for(let i=0;i<80;i++){
+
+const star=document.createElement("div");
+
+star.className="star";
+
+star.style.width=star.style.height=Math.random()*3+2+"px";
+star.style.top=Math.random()*100+"%";
+star.style.left=Math.random()*100+"%";
+star.style.opacity=Math.random();
+
+document.body.appendChild(star);
+
+}
+
+async function sendMessage(){
+
+const input=document.getElementById("userInput");
+const chat=document.getElementById("chatBox");
+
+const userText=input.value;
+
+if(userText.trim()==="") return;
+
+chat.innerHTML+=`<p class="user">Ты: ${userText}</p>`;
+
+input.value="";
+
+chat.innerHTML+=`<p class="bot">Бот: Думаю над ответом... 🚀</p>`;
+
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+</script>
+
 </body>
 </html>
