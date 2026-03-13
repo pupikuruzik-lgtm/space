@@ -31,11 +31,6 @@ background:white;
 border-radius:50%;
 }
 
-.planet{
-position:absolute;
-border-radius:50%;
-}
-
 #chatBox{
 width:350px;
 height:250px;
@@ -77,7 +72,7 @@ padding:6px 10px;
 <p class="neon-text">Солнечная система состоит из 8 планет.</p>
 
 <h2 class="neon-big-text">⭐ Звёзды</h2>
-<p class="neon-text">Звезды — огромные шары газа.</p>
+<p class="neon-text">Звезды — огромные раскалённые шары газа.</p>
 
 <h2 class="neon-big-text">👨‍🚀 Космонавты</h2>
 <p class="neon-text">Космонавты исследуют космос.</p>
@@ -85,11 +80,9 @@ padding:6px 10px;
 <h2 class="neon-big-text">💬 Чат с космическим помощником</h2>
 
 <div id="chatBox"></div>
-
 <br>
 
-<input id="userInput" placeholder="Спроси что-нибудь о космосе">
-
+<input id="userInput" placeholder="Спроси о космосе">
 <button onclick="sendMessage()">Отправить</button>
 
 <script>
@@ -119,20 +112,20 @@ input.value=""
 
 let answer="Я пока не знаю ответ 🤖"
 
-if(text.includes("планет"))
+if(text.includes("привет"))
+answer="Привет! Я космический помощник 🚀"
+
+else if(text.includes("планет"))
 answer="В Солнечной системе 8 планет: Меркурий, Венера, Земля, Марс, Юпитер, Сатурн, Уран и Нептун."
 
 else if(text.includes("солнце"))
-answer="Солнце — это звезда в центре нашей Солнечной системы."
+answer="Солнце — это звезда в центре Солнечной системы."
 
 else if(text.includes("луна"))
-answer="Луна — это естественный спутник Земли."
+answer="Луна — спутник Земли."
 
 else if(text.includes("галактик"))
 answer="Наша галактика называется Млечный Путь."
-
-else if(text.includes("привет"))
-answer="Привет! Я космический помощник 🚀"
 
 chat.innerHTML+=`<p class="bot">Бот: ${answer}</p>`
 
