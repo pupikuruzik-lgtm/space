@@ -1,9 +1,10 @@
 import OpenAI from "openai";
 
+// Создаём клиент OpenAI с ключом из переменных окружения
 const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 export default async function handler(req, res) {
-  // Проверяем, что это POST-запрос
+  // Проверяем метод
   if (req.method !== "POST") {
     return res.status(405).json({ answer: "Метод не разрешен" });
   }
@@ -14,11 +15,12 @@ export default async function handler(req, res) {
   try {
     // Отправляем запрос в OpenAI
     const response = await client.chat.completions.create({
-      model: "gpt-4o-mini", // можно заменить на "gpt-3.5-turbo" для теста
+      model: "gpt-3.5-turbo", // Надежная модель для всех аккаунтов
       messages: [
         { role: "system", content: "Ты космический помощник." },
         { role: "user", content: message }
-      ]
+      ],
+      temperature: 0.7 // можно регулировать креативность ответов
     });
 
     // Берём ответ модели
@@ -26,8 +28,8 @@ export default async function handler(req, res) {
     res.status(200).json({ answer });
 
   } catch (err) {
-    // Логируем ошибку для отладки
-    console.error("Ошибка OpenAI:", err.response?.status, err.response?.data || err.message);
-    res.status(500).json({ answer: "Ошибка сервера" });
+    // Полное логирование ошибки для отладки
+    console.error("Ошибка OpenAI full:", JSON.stringify(err, Object.getOwnPropertyNames(err), 2));
+    res.status(500).json({ answer: "Ошибка сервера. Проверь ключ OpenAI и модель." });
   }
 }
