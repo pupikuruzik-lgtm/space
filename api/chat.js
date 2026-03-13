@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const client = new OpenAI({ apiKey: process.env.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 });
 
 export default async function handler(req, res) {
   if(req.method !== "POST"){
